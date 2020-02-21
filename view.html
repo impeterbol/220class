@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <title>Star Wars - Express</title>
   <!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
@@ -19,7 +21,10 @@
       <h1>Star Wars Express</h1>
       <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
       <hr>
-      <button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New Character</button>
+      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New
+          Character</button></a>
+      <a href="/api/characters"><button class="btn btn-danger btn-lg"><span
+            class="fa fa-eye"></span> All Characters</button></a>
     </div>
     <div class="row">
 
@@ -33,8 +38,10 @@
             <input type="text" id="character-search" class="form-control">
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span> Search
-                Your Feelings. You know it to be true.</button>
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span
+                  class="fa fa-search"></span> Search
+                Your Feelings. You know it is true.</button>
+
             </div>
           </div>
         </div>
@@ -57,7 +64,6 @@
   </div>
 
   <script type="text/javascript">
-    // QUESTION: What is this code doing?
     $("#search-btn").on("click", function() {
       var searchedCharacter = $("#character-search").val().trim();
 
@@ -65,7 +71,6 @@
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      // QUESTION: What does $.get do? What are the parameters it is expecting?
       $.get("/api/characters/" + searchedCharacter, function(data) {
         console.log(data);
         if (data) {
@@ -74,15 +79,15 @@
           $("#role").text(data.role);
           $("#age").text(data.age);
           $("#force-points").text(data.forcePoints);
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
+        } else {
+          $("#name").text(
+            "The force is not strong with this one. Your character was not found.");
           $("#stats").hide();
         }
       });
     });
-  </script>
 
+  </script>
 </body>
 
 </html>
